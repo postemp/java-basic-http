@@ -1,54 +1,37 @@
 package org.postemp.http.server;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.nio.charset.StandardCharsets;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Scanner;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class MainApplication {
     public static final int PORT = 8189;
-
-    public static void main(String[] args) {
+    private static final Logger logger = LogManager.getLogger(MainApplication.class.getName());
+    public static void main(String[] args) throws Exception {
         try (ServerSocket serverSocket = new ServerSocket(PORT)) {
-            Map<String,MyWebApplication> router = new HashMap<>();
-            // /calculator
-            // /greetings
-            router.put("/calculator", new CalculatorWebApplication());
-            router.put("/greetings", new GreetingsWebApplication());
-
-            System.out.println("Сервер запущен, порт: " + PORT);
-            try (Socket socket = serverSocket.accept()) {
-                System.out.println("Клиент подключился");
-                byte[] buffer = new byte[2048]; // поставить цикл здесь
-                int n = socket.getInputStream().read(buffer); // смотрим сколько байтов прилетело
-                String rawRequest = new String(buffer, 0, n); // собираем строку из байтов буффера
-
-                Request request = new Request(rawRequest);
-                System.out.println("Получен запрос:");
-                request.show();
-
-                boolean executed = false;
-                for(Map.Entry<String, MyWebApplication> e : router.entrySet()) {
-                    if (request.getUri().startsWith(e.getKey())) {
-                        e.getValue().execute(request, socket.getOutputStream());
-                        executed = true;
-                        break;
-                    }
+            logger.info("Сервер запущен, порт: " + PORT);
+            ExecutorService executorService = Executors.newFixedThreadPool(20);
+            int clientCounter = 0;
+            while (true) {
+                logger.debug("Ждем нового соединения");
+                clientCounter++;
+                try {
+                    Socket socket = serverSocket.accept();
+                    logger.debug("Клиент подключился: " + socket.isConnected());
+                    executorService.execute(new ServerClientThread(socket, clientCounter));
+                } catch (Exception e) {
+                    logger.error("Исключение: "+e);
                 }
-                if (!executed) {
-                    socket.getOutputStream().write(("HTTP/1.1 200 OK\r\nContent-Type: text/html\r\n\r\n<html><body><h1>Unknown applicaton</h1></body></html>").getBytes(StandardCharsets.UTF_8));
-                }
-
-            } catch (IOException e) {
-                e.printStackTrace();
+                logger.debug("Запустили thread, переход на следующий цикл");
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error("Исключение: "+e);
         }
     }
-
-
 }

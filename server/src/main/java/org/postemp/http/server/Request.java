@@ -14,7 +14,6 @@ public class Request {
         return this.  uri;
     }
 
-
     public Request(String rawRequest) {
         this.raw = rawRequest;
         this.uri = parseUri(raw);
@@ -49,10 +48,9 @@ public class Request {
         return out;
     }
 
-    public void show() {
-        System.out.println("Запрос:");
-        System.out.println("uri: "+ uri);
-        System.out.println("params: " + params);
+    public String show() {
+        return "uri: "+ uri +
+        "  params: " + params;
     }
 
     public String getParam(String key) {

@@ -1,0 +1,23 @@
+INFO  22.10.2023 11:24:06 [main] org.postemp.http.server.MainApplication (MainApplication.java:19) - Сервер запущен, порт: 8189
+DEBUG 22.10.2023 11:24:20 [pool-2-thread-2] org.postemp.http.server.ServerClientThread (ServerClientThread.java:24) - Начинаем обработку данных от клиента под номером 2
+DEBUG 22.10.2023 11:24:20 [pool-2-thread-1] org.postemp.http.server.ServerClientThread (ServerClientThread.java:24) - Начинаем обработку данных от клиента под номером 1
+DEBUG 22.10.2023 11:24:20 [pool-2-thread-1] org.postemp.http.server.ServerClientThread (ServerClientThread.java:30) - Получен запрос - uri: /calculator/add  params: {a=1, b=27}
+DEBUG 22.10.2023 11:24:20 [pool-2-thread-1] org.postemp.http.server.ServerClientThread (ServerClientThread.java:48) - Обработка данных клиента под номером 1  закончена
+DEBUG 22.10.2023 11:24:20 [pool-2-thread-2] org.postemp.http.server.ServerClientThread (ServerClientThread.java:30) - Получен запрос - uri: /favicon.ico  params: {}
+TRACE 22.10.2023 11:24:20 [pool-2-thread-2] org.postemp.http.server.ServerClientThread (ServerClientThread.java:41) - Этот сырой запрос не смогли обработать: GET /favicon.ico HTTP/1.1
+Host: localhost:8189
+Connection: keep-alive
+sec-ch-ua: "Chromium";v="118", "Google Chrome";v="118", "Not=A?Brand";v="99"
+sec-ch-ua-mobile: ?0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36
+sec-ch-ua-platform: "Linux"
+Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Dest: image
+Referer: http://localhost:8189/calculator/add?a=1&b=27
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-GB,en-US;q=0.9,en;q=0.8,ru;q=0.7,uk;q=0.6
+
+
+DEBUG 22.10.2023 11:24:20 [pool-2-thread-2] org.postemp.http.server.ServerClientThread (ServerClientThread.java:48) - Обработка данных клиента под номером 2  закончена
