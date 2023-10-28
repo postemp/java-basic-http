@@ -8,10 +8,10 @@ import java.net.Socket;
 
 public class ServerClientThread extends Thread {
     private static final Logger logger = LogManager.getLogger(ServerClientThread.class.getName());
-    Socket socket;
+    private Socket socket;
     int clientNo;
-    MyWebApplication myWebApplication;
-    Request request;
+    private MyWebApplication myWebApplication;
+    private Request request;
 
     ServerClientThread(Socket inSocket, int counter, MyWebApplication myWebApplication, Request request) {
         this.socket = inSocket;

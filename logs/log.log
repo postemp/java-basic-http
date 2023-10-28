@@ -641,3 +641,16 @@ DEBUG 28.10.2023 15:48:47 [main] org.postemp.http.server.MainApplication (MainAp
 ERROR 28.10.2023 15:48:47 [main] org.postemp.http.server.MainApplication (MainApplication.java:53) - Исключение: java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1
 DEBUG 28.10.2023 15:48:47 [main] org.postemp.http.server.MainApplication (MainApplication.java:55) - Запустили , переход на следующий цикл
 DEBUG 28.10.2023 15:48:47 [main] org.postemp.http.server.MainApplication (MainApplication.java:29) - Ждем нового соединения
+INFO  28.10.2023 15:54:05 [main] org.postemp.http.server.MainApplication (MainApplication.java:25) - Сервер запущен, порт: 8189
+DEBUG 28.10.2023 15:54:05 [main] org.postemp.http.server.MainApplication (MainApplication.java:29) - Ждем нового соединения
+DEBUG 28.10.2023 15:54:14 [main] org.postemp.http.server.MainApplication (MainApplication.java:34) - Клиент подключился: true
+DEBUG 28.10.2023 15:54:14 [main] org.postemp.http.server.MainApplication (MainApplication.java:39) - Получен запрос - uri: /calculator/add  params: {a=1, b=28}
+DEBUG 28.10.2023 15:54:14 [main] org.postemp.http.server.MainApplication (MainApplication.java:55) - Запустили , переход на следующий цикл
+DEBUG 28.10.2023 15:54:14 [main] org.postemp.http.server.MainApplication (MainApplication.java:29) - Ждем нового соединения
+DEBUG 28.10.2023 15:54:14 [main] org.postemp.http.server.MainApplication (MainApplication.java:34) - Клиент подключился: true
+DEBUG 28.10.2023 15:54:14 [pool-2-thread-1] org.postemp.http.server.ServerClientThread (ServerClientThread.java:31) - Обработка данных клиента под номером 1  закончена
+DEBUG 28.10.2023 15:54:19 [main] org.postemp.http.server.MainApplication (MainApplication.java:39) - Получен запрос - uri: /calculator/add  params: {a=1, b=2}
+DEBUG 28.10.2023 15:54:19 [main] org.postemp.http.server.MainApplication (MainApplication.java:55) - Запустили , переход на следующий цикл
+DEBUG 28.10.2023 15:54:19 [pool-2-thread-2] org.postemp.http.server.ServerClientThread (ServerClientThread.java:31) - Обработка данных клиента под номером 2  закончена
+DEBUG 28.10.2023 15:54:19 [main] org.postemp.http.server.MainApplication (MainApplication.java:29) - Ждем нового соединения
+DEBUG 28.10.2023 15:54:19 [main] org.postemp.http.server.MainApplication (MainApplication.java:34) - Клиент подключился: true
